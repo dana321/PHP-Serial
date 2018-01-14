@@ -107,10 +107,13 @@ class PhpSerial
                     return true;
                 }
             } elseif ($this->_os === "osx") {
+                if (preg_match("@^COM(\\d+):?$@i", $device, $matches)) {
+                    $device = "/dev/ttys00" . ($matches[1] - 1);
+                }
                 if ($this->_exec("stty -f " . $device) === 0) {
                     $this->_device = $device;
                     $this->_dState = SERIAL_DEVICE_SET;
-
+                    
                     return true;
                 }
             } elseif ($this->_os === "windows") {
