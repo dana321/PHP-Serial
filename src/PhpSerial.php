@@ -24,6 +24,7 @@ class PhpSerial
     public $_dState = SERIAL_DEVICE_NOTSET;
     public $_buffer = "";
     public $_os = "";
+    public $_sub_os = "none";
 
     /**
      * This var says if buffer should be flushed by sendMessage (true) or
@@ -55,6 +56,11 @@ class PhpSerial
                     E_USER_ERROR
                 );
             }
+            if(substr($sysName,6,10)==="raspberrypi"){
+                $this->_sub_os='raspberrypi';   
+            }
+            
+            
         } elseif (substr($sysName, 0, 6) === "Darwin") {
             $this->_os = "osx";
             register_shutdown_function(array($this, "deviceClose"));
@@ -87,9 +93,13 @@ class PhpSerial
         if ($this->_dState !== SERIAL_DEVICE_OPENED) {
             if ($this->_os === "linux") {
                 if (preg_match("@^COM(\\d+):?$@i", $device, $matches)) {
-                    $device = "/dev/ttyS" . ($matches[1] - 1);
+                    if($this->_sub_os === 'raspberrypi'){
+                        $device = "/dev/serial" . ($matches[1] - 1);
+                    }
+                    else{
+                        $device = "/dev/ttyS" . ($matches[1] - 1);   
+                    }
                 }
-
                 if ($this->_exec("stty -F " . $device) === 0) {
                     $this->_device = $device;
                     $this->_dState = SERIAL_DEVICE_SET;
