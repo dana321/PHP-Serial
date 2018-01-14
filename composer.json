@@ -1,11 +1,15 @@
 {
-    "name": "hyperthese/php-serial",
-    "description": "Multi-platform serial port access convenience class",
+    "name": "dana321/PHP-Serial",
+    "description": "Multi-platform serial port access",
     "license": "GNU GPLv2",
     "authors": [
         {
             "name": "Rémy Sanchez",
             "email": "remy.sanchez@hyperthese.net"
+        },
+        {
+            "name": "Dana Adalaide",
+            "email": "dana12345678910111213@gmail.com"
         }
     ],
     "minimum-stability": "stable",
