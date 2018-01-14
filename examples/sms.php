@@ -9,16 +9,16 @@ $serial = new PhpSerial;
 // If you are using Windows, make sure you disable FIFO from the modem's
 // Device Manager properties pane (Advanced >> Advanced Port Settings...)
 
-$serial->deviceSet("COM4");
+$serial->deviceSet("COM1");
+
+// We can change the baud rate
+$serial->confBaudRate(9600);
 
 // Then we need to open it
 $serial->deviceOpen('w+');
 
 // We may need to return if nothing happens for 10 seconds
 stream_set_timeout($serial->_dHandle, 10);
-
-// We can change the baud rate
-$serial->confBaudRate(9600);
 
 // SMS inbox query - mode command and list command
 $serial->sendMessage("AT",1);
