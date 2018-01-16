@@ -1,15 +1,13 @@
 PHP Serial
 ==========
 
-PHP Serial was written at a time where I did not know any other language than
-PHP and I started to get seriously bored with its abilities.
+Hi,
 
-I somehow got hold of a « Citizen C2202-PD » point-of-sale display, and I wanted
-to play around with it. I also managed to get the documentation of it, and
-created a convenience class to access the serial port though the Linux file.
+I'm taking the time to improve this class as the only other option is python or c, both which are kind of useless for what i'm working on - i already have a huge php infrastructure i'm working on so this is the class for me (and you!)
 
-Afterwards, I posted it to [PHP Classes](http://www.phpclasses.org/package/3679-PHP-Communicate-with-a-serial-port.html),
-and this probably is what brought it any visibility.
+I'm working on sending and parsing AT commands using this library on a raspberry pi, but hopefully i can get similar hardware for mac, windows and linux (send me a message if you know where i can get cheap devices to get a serial connection to send AT commands to.
+
+I will include the class i create to send/receive sms messages on a SIM800 board once i've finished it which uses this library.
 
 Example
 -------
@@ -81,6 +79,19 @@ I have a few concerns regarding the behaviour of this code.
 * Use exceptions. Currently there is an heavy use of the errors system to report
   errors (2007 baby), but this is seriously lame. They have to be replaced by
   actual exceptions.
+
+### Original author's notes:
+
+PHP Serial was written at a time where I did not know any other language than
+PHP and I started to get seriously bored with its abilities.
+
+I somehow got hold of a « Citizen C2202-PD » point-of-sale display, and I wanted
+to play around with it. I also managed to get the documentation of it, and
+created a convenience class to access the serial port though the Linux file.
+
+Afterwards, I posted it to [PHP Classes](http://www.phpclasses.org/package/3679-PHP-Communicate-with-a-serial-port.html),
+and this probably is what brought it any visibility.
+
 
 Call for contribution
 ---------------------
